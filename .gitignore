@@ -1,0 +1,37 @@
+# Build outputs
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio / MSBuild
+.vs/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.rsuser
+*.cache
+project.lock.json
+
+# NuGet
+*.nupkg
+**/packages/*
+!**/packages/build/
+
+# Test / coverage
+[Tt]est[Rr]esult*/
+*.trx
+coverage*.json
+coverage*.xml
+
+# Rider / VS Code (local)
+.idea/
+.vscode/
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# App.config is NOT ignored — connection string is committed on purpose.
