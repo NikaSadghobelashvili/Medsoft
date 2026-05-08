@@ -35,7 +35,7 @@ public sealed class PatientService
         if (p.GenderID <= 0)
             throw new ArgumentException("გთხოვთ აირჩიოთ სქესი.");
 
-        p.Phone = NormalizePhone(p.Phone);
+        p.Phone = NormalizeDigitsOnly(p.Phone);
         if (!string.IsNullOrWhiteSpace(p.Phone))
         {
             // მოთხოვნა: 5-ით იწყებოდეს და იყოს 9 ციფრი
@@ -45,13 +45,30 @@ public sealed class PatientService
 
         if (string.IsNullOrWhiteSpace(p.Address))
             p.Address = null;
+
+        p.PersonalNumber = NormalizeDigitsOnly(p.PersonalNumber);
+        if (!string.IsNullOrWhiteSpace(p.PersonalNumber))
+        {
+            if (p.PersonalNumber.Length != 11)
+                throw new ArgumentException("პირადი ნომერი უნდა იყოს 11-ნიშნა.");
+        }
+
+        p.Email = NormalizeEmail(p.Email);
+        if (!string.IsNullOrWhiteSpace(p.Email) && !p.Email.Contains('@'))
+            throw new ArgumentException("ელ-ფოსტა უნდა შეიცავდეს @ სიმბოლოს.");
     }
 
-    private static string? NormalizePhone(string? phone)
+    private static string? NormalizeDigitsOnly(string? value)
     {
-        if (string.IsNullOrWhiteSpace(phone)) return null;
+        if (string.IsNullOrWhiteSpace(value)) return null;
 
-        var digitsOnly = Regex.Replace(phone, "\\D", "");  
+        var digitsOnly = Regex.Replace(value, "\\D", "");  
         return string.IsNullOrWhiteSpace(digitsOnly) ? null : digitsOnly;
+    }
+
+    private static string? NormalizeEmail(string? email)
+    {
+        if (string.IsNullOrWhiteSpace(email)) return null;
+        return email.Trim();
     }
 }

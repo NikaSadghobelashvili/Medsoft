@@ -40,6 +40,10 @@
             txtAddress = new TextBox();
             btnCancel = new Button();
             button2 = new Button();
+            label6 = new Label();
+            label7 = new Label();
+            txtEmail = new TextBox();
+            txtPersonalNumber = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -145,11 +149,47 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(80, 284);
+            label6.Name = "label6";
+            label6.Size = new Size(87, 20);
+            label6.TabIndex = 12;
+            label6.Text = "ელ ფოსტა";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(80, 326);
+            label7.Name = "label7";
+            label7.Size = new Size(127, 20);
+            label7.TabIndex = 13;
+            label7.Text = "პირადი ნომერი";
+            // 
+            // txtEmail
+            // 
+            txtEmail.Location = new Point(208, 281);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(125, 27);
+            txtEmail.TabIndex = 14;
+            // 
+            // txtPersonalNumber
+            // 
+            txtPersonalNumber.Location = new Point(228, 319);
+            txtPersonalNumber.Name = "txtPersonalNumber";
+            txtPersonalNumber.Size = new Size(125, 27);
+            txtPersonalNumber.TabIndex = 15;
+            // 
             // PatientForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(txtPersonalNumber);
+            Controls.Add(txtEmail);
+            Controls.Add(label7);
+            Controls.Add(label6);
             Controls.Add(button2);
             Controls.Add(btnCancel);
             Controls.Add(txtAddress);
@@ -183,5 +223,9 @@
         private TextBox txtAddress;
         private Button btnCancel;
         private Button button2;
+        private Label label6;
+        private Label label7;
+        private TextBox txtEmail;
+        private TextBox txtPersonalNumber;
     }
 }

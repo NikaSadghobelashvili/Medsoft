@@ -18,6 +18,9 @@ namespace Medbay.WinForms
             dgvPatients.Columns["Phone"].HeaderText = "მობ ნომერი";
             dgvPatients.Columns["Address"].HeaderText = "მისამართი";
             dgvPatients.Columns["GenderID"].Visible = false; // თუ არ გჭირდება
+            dgvPatients.Columns["PersonalNumber"].HeaderText = "პირადი ნომერი";
+            dgvPatients.Columns["Email"].HeaderText = "ელ ფოსტა";
+
         }
         private void MainForm_Load(object sender, EventArgs e)
         {

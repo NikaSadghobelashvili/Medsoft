@@ -11,4 +11,7 @@ public sealed class Patient
     public string? Address { get; set; }
 
     public string? GenderName { get; set; }
+
+    public string? PersonalNumber { get; set; }
+    public string? Email { get; set; }
 }

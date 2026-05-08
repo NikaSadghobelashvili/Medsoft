@@ -28,6 +28,8 @@ namespace Medbay.WinForms.UI
             dtpDob.Value = p.Dob;
             txtPhone.Text = p.Phone ?? "";
             txtAddress.Text = p.Address ?? "";
+            txtEmail.Text = p.Email ?? "";
+            txtPersonalNumber.Text = p.PersonalNumber ?? "";
 
         }
         private void PatientForm_Load(object sender, EventArgs e)
@@ -51,7 +53,9 @@ namespace Medbay.WinForms.UI
                     Dob = dtpDob.Value.Date,
                     GenderID = Convert.ToInt32(cmbGender.SelectedValue),
                     Phone = txtPhone.Text,
-                    Address = txtAddress.Text
+                    Address = txtAddress.Text,
+                    Email = txtEmail.Text,
+                    PersonalNumber=txtPersonalNumber.Text
                 };
                 if (_editing == null)
                 {
@@ -64,6 +68,10 @@ namespace Medbay.WinForms.UI
                 }
                 DialogResult = DialogResult.OK;
                 Close();
+            }
+            catch (Microsoft.Data.SqlClient.SqlException ex) when (ex.Number is 2601 or 2627)
+            {
+                MessageBox.Show("პირადი ნომერი უკვე არსებობს. გთხოვთ შეიყვანოთ განსხვავებული 11-ნიშნა პირადი ნომერი.");
             }
             catch (Exception ex)
             {

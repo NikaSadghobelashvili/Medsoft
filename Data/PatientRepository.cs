@@ -29,6 +29,8 @@ public sealed class PatientRepository
                 //წაიკითხავს როგორც DbNull თუ არ არის მაშინ წაიკითხავს როგორც string-ს
                 Phone = r.IsDBNull(r.GetOrdinal("Phone")) ? null : r.GetString(r.GetOrdinal("Phone")),
                 Address = r.IsDBNull(r.GetOrdinal("Address")) ? null : r.GetString(r.GetOrdinal("Address")),
+                PersonalNumber = r.IsDBNull(r.GetOrdinal("PersonalNumber")) ? null : r.GetString(r.GetOrdinal("PersonalNumber")),
+                Email = r.IsDBNull(r.GetOrdinal("Email")) ? null : r.GetString(r.GetOrdinal("Email"))
             });
         }
 
@@ -46,6 +48,8 @@ public sealed class PatientRepository
         cmd.Parameters.AddWithValue("@GenderID", p.GenderID);
         cmd.Parameters.AddWithValue("@Phone", (object?)p.Phone ?? DBNull.Value);
         cmd.Parameters.AddWithValue("@Address", (object?)p.Address ?? DBNull.Value);
+        cmd.Parameters.AddWithValue("@PersonalNumber", (object?)p.PersonalNumber ?? DBNull.Value);
+        cmd.Parameters.AddWithValue("@Email", (object?)p.Email ?? DBNull.Value);
 
         con.Open();
         var obj = cmd.ExecuteScalar();
@@ -64,6 +68,8 @@ public sealed class PatientRepository
         cmd.Parameters.AddWithValue("@GenderID", p.GenderID);
         cmd.Parameters.AddWithValue("@Phone", (object?)p.Phone ?? DBNull.Value);
         cmd.Parameters.AddWithValue("@Address", (object?)p.Address ?? DBNull.Value);
+        cmd.Parameters.AddWithValue("@PersonalNumber", (object?)p.PersonalNumber ?? DBNull.Value);
+        cmd.Parameters.AddWithValue("@Email", (object?)p.Email ?? DBNull.Value);
 
         con.Open();
         cmd.ExecuteNonQuery();
